@@ -1,0 +1,49 @@
+{
+  "contatos": [
+    {
+      "id": "1",
+      "nome": "Janael Martins",
+      "email": "janaelmartins@gmail.com",
+      "telefone": "(81) 99998-6892",
+      "avatarUrl": "https://images.unsplash.com/vector-1740737650825-1ce4f5377085?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "dataNascimento": "1978-10-22",
+      "whatsapp": "(81) 99998-6892"
+    },
+    {
+      "id": "2",
+      "nome": "Lucas Zoser",
+      "email": "lucas@email.com",
+      "telefone": "(61) 9969-5902",
+      "avatarUrl": "https://plus.unsplash.com/premium_vector-1727955579176-073f1c85dcda?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "dataNascimento": "1985-11-22",
+      "whatsapp": "(61) 9969-5902"
+    },
+    {
+      "id": "3",
+      "nome": "Bruno Favalli",
+      "email": "Bruno.favalli@email.com",
+      "telefone": "(12) 982506065",
+      "avatarUrl": "https://plus.unsplash.com/premium_vector-1727956885330-0b80b9df0fc7?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "dataNascimento": "1993-12-03",
+      "whatsapp": "(12) 98250-6065"
+    },
+    {
+      "id": "4",
+      "nome": "Gabriel Silva",
+      "email": "gabrielsilva@email.com",
+      "telefone": "(75) 98893-1318",
+      "avatarUrl": "https://plus.unsplash.com/premium_vector-1727955579185-ed12a1c678de?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "dataNascimento": "1988-03-18",
+      "whatsapp": "(75) 98893-1318"
+    },
+    {
+      "id": "5",
+      "nome": "Rafael Yoshida",
+      "email": "rafael.yoshida@email.com",
+      "telefone": "(11) 99978-4706",
+      "avatarUrl": "https://plus.unsplash.com/premium_vector-1728560971527-140ca22e3d81?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "dataNascimento": "1987-11-25",
+      "whatsapp": "(11) 99978-4706"
+    }
+  ]
+}

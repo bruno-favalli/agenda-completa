@@ -1,0 +1,166 @@
+<div class="row justify-content-center" *ngIf="!carregando; else loading">
+  <div class="col-lg-8 col-md-10" *ngIf="contato">
+    <!-- Cabeçalho com informações principais -->
+    <div class="card mb-4">
+      <div class="card-body text-center">
+        <div class="mb-3">
+          <img
+            *ngIf="contato.avatarUrl"
+            [src]="contato.avatarUrl"
+            [alt]="contato.nome"
+            class="avatar-large"
+            (error)="$event.target.style.display='none'"
+          >
+          <div
+            *ngIf="!contato.avatarUrl"
+            class="avatar-large bg-primary text-white d-flex align-items-center justify-content-center mx-auto"
+          >
+            <span style="font-size: 2rem;">{{ obterIniciais(contato.nome) }}</span>
+          </div>
+        </div>
+        
+        <h2 class="mb-2">{{ contato.nome }}</h2>
+        <p class="text-muted mb-3">{{ contato.email }}</p>
+        
+        <!-- Botões de ação rápida -->
+        <div class="d-flex gap-2 justify-content-center flex-wrap">
+          <button
+            class="btn btn-success"
+            (click)="ligarPara()"
+            *ngIf="contato.telefone"
+          >
+            <i class="fas fa-phone me-1"></i>
+            Ligar
+          </button>
+          
+          <button
+            class="btn btn-success"
+            (click)="abrirWhatsApp()"
+            *ngIf="contato.whatsapp"
+          >
+            <i class="fab fa-whatsapp me-1"></i>
+            WhatsApp
+          </button>
+          
+          <button
+            class="btn btn-primary"
+            (click)="enviarEmail()"
+          >
+            <i class="fas fa-envelope me-1"></i>
+            Email
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Informações detalhadas -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5 class="mb-0">
+          <i class="fas fa-info-circle me-2"></i>
+          Informações de Contato
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-bold">
+              <i class="fas fa-user me-2 text-primary"></i>
+              Nome Completo
+            </label>
+            <p class="mb-0">{{ contato.nome }}</p>
+          </div>
+          
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-bold">
+              <i class="fas fa-envelope me-2 text-primary"></i>
+              Email
+            </label>
+            <p class="mb-0">
+              <a [href]="'mailto:' + contato.email" class="text-decoration-none">
+                {{ contato.email }}
+              </a>
+            </p>
+          </div>
+          
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-bold">
+              <i class="fas fa-phone me-2 text-primary"></i>
+              Telefone
+            </label>
+            <p class="mb-0">
+              <a href="javascript:void(0)" (click)="ligarPara()" class="text-decoration-none">
+                {{ formatarTelefone(contato.telefone) }}
+              </a>
+            </p>
+          </div>
+          
+          <div class="col-md-6 mb-3" *ngIf="contato.whatsapp">
+            <label class="form-label fw-bold">
+              <i class="fab fa-whatsapp me-2 text-success"></i>
+              WhatsApp
+            </label>
+            <p class="mb-0">
+              <a href="javascript:void(0)" (click)="abrirWhatsApp()" class="text-decoration-none">
+                {{ contato.whatsapp }}
+              </a>
+            </p>
+          </div>
+          
+          <div class="col-md-6 mb-3" *ngIf="contato.dataNascimento">
+            <label class="form-label fw-bold">
+              <i class="fas fa-birthday-cake me-2 text-warning"></i>
+              Data de Nascimento
+            </label>
+            <p class="mb-0">
+              {{ formatarData(contato.dataNascimento) }}
+              <span *ngIf="calcularIdade(contato.dataNascimento) as idade" class="text-muted">
+                ({{ idade }} anos)
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botões de ação -->
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex gap-2 justify-content-between flex-wrap">
+          <a routerLink="/contatos" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-1"></i>
+            Voltar à Lista
+          </a>
+          
+          <div class="d-flex gap-2">
+            <a
+              [routerLink]="['/contatos', contato.id, 'editar']"
+              class="btn btn-warning"
+            >
+              <i class="fas fa-edit me-1"></i>
+              Editar
+            </a>
+            
+            <button
+              class="btn btn-danger"
+              (click)="excluirContato()"
+            >
+              <i class="fas fa-trash me-1"></i>
+              Excluir
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Carregando...</span>
+    </div>
+    <p class="mt-2 text-muted">Carregando detalhes do contato...</p>
+  </div>
+</ng-template>
+

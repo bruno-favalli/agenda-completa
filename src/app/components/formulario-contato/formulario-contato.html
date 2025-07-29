@@ -1,0 +1,169 @@
+<div class="row justify-content-center">
+  <div class="col-lg-8 col-md-10">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="mb-0">
+          <i class="fas fa-{{ isEdicao ? 'edit' : 'plus' }} me-2"></i>
+          {{ isEdicao ? 'Editar Contato' : 'Novo Contato' }}
+        </h3>
+      </div>
+      
+      <div class="card-body" *ngIf="!carregando; else loading">
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <!-- Nome -->
+            <div class="col-md-6 mb-3">
+              <label for="nome" class="form-label">
+                Nome <span class="text-danger">*</span>
+              </label>
+              <input
+                type="text"
+                id="nome"
+                class="form-control"
+                formControlName="nome"
+                [class.is-invalid]="campoInvalido('nome')"
+                placeholder="Digite o nome completo"
+              >
+              <div class="invalid-feedback" *ngIf="campoInvalido('nome')">
+                {{ obterErro('nome') }}
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="col-md-6 mb-3">
+              <label for="email" class="form-label">
+                Email <span class="text-danger">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                formControlName="email"
+                [class.is-invalid]="campoInvalido('email')"
+                placeholder="exemplo@email.com"
+              >
+              <div class="invalid-feedback" *ngIf="campoInvalido('email')">
+                {{ obterErro('email') }}
+              </div>
+            </div>
+
+            <!-- Telefone -->
+            <div class="col-md-6 mb-3">
+              <label for="telefone" class="form-label">
+                Telefone <span class="text-danger">*</span>
+              </label>
+              <input
+                type="text"
+                id="telefone"
+                class="form-control"
+                formControlName="telefone"
+                [class.is-invalid]="campoInvalido('telefone')"
+                placeholder="(11) 99999-9999"
+                mask="(00) 00000-0000"
+              >
+              <div class="invalid-feedback" *ngIf="campoInvalido('telefone')">
+                {{ obterErro('telefone') }}
+              </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="col-md-6 mb-3">
+              <label for="whatsapp" class="form-label">
+                WhatsApp
+              </label>
+              <input
+                type="text"
+                id="whatsapp"
+                class="form-control"
+                formControlName="whatsapp"
+                placeholder="(11) 99999-9999"
+                mask="(00) 00000-0000"
+              >
+            </div>
+
+            <!-- Data de Nascimento -->
+            <div class="col-md-6 mb-3">
+              <label for="dataNascimento" class="form-label">
+                Data de Nascimento
+              </label>
+              <input
+                type="date"
+                id="dataNascimento"
+                class="form-control"
+                formControlName="dataNascimento"
+              >
+            </div>
+
+            <!-- URL do Avatar -->
+            <div class="col-md-6 mb-3">
+              <label for="avatarUrl" class="form-label">
+                URL do Avatar
+              </label>
+              <input
+                type="url"
+                id="avatarUrl"
+                class="form-control"
+                formControlName="avatarUrl"
+                [class.is-invalid]="campoInvalido('avatarUrl')"
+                placeholder="https://exemplo.com/avatar.jpg"
+              >
+              <div class="invalid-feedback" *ngIf="campoInvalido('avatarUrl')">
+                {{ obterErro('avatarUrl') }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview do Avatar -->
+          <div class="row mb-3" *ngIf="formulario.get('avatarUrl')?.value">
+            <div class="col-12">
+              <label class="form-label">Preview do Avatar:</label>
+              <div class="d-flex align-items-center">
+                <img
+                  [src]="formulario.get('avatarUrl')?.value"
+                  alt="Preview"
+                  class="avatar-large me-3"
+                  (error)="$event.target.style.display='none'"
+                >
+                <small class="text-muted">
+                  Se a imagem não aparecer, verifique se a URL está correta e acessível.
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botões -->
+          <div class="d-flex gap-2 justify-content-end">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="cancelar()"
+              [disabled]="carregando"
+            >
+              <i class="fas fa-times me-1"></i>
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="formulario.invalid || carregando"
+            >
+              <span *ngIf="carregando" class="spinner-border spinner-border-sm me-2"></span>
+              <i class="fas fa-{{ isEdicao ? 'save' : 'plus' }} me-1" *ngIf="!carregando"></i>
+              {{ isEdicao ? 'Atualizar' : 'Criar' }} Contato
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <ng-template #loading>
+        <div class="card-body text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Carregando...</span>
+          </div>
+          <p class="mt-2 text-muted">Carregando dados do contato...</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
