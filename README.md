@@ -41,26 +41,17 @@ interface Contato {
 
 ## 📦 Instalação e Execução
 
-### Pré-requisitos
-
-- Node.js 18+ 
-- npm 9+
 
 ### Passos para executar
 
-1. **Extrair o projeto**
-   ```bash
-   unzip agenda-contatos.zip
-   cd agenda-contatos
-   ```
 
-2. **Instalar dependências**
+1. **Instalar dependências**
    ```bash
    npm install
    ```
 
 3. **Executar a aplicação**
-   ```bash
+  
    # Opção 1: Executar JSON Server e Angular simultaneamente
    npm run dev
    
@@ -73,7 +64,7 @@ interface Contato {
    ```
 
 4. **Acessar a aplicação**
-   - Frontend: http://localhost:4200
+   - Front: http://localhost:4200
    - API (JSON Server): http://localhost:3001
 
 ## 📁 Estrutura do Projeto
@@ -135,15 +126,6 @@ agenda-contatos/
   - Data de nascimento
 - Clique no "X" para limpar o filtro
 
-## 🔧 Scripts Disponíveis
-
-```bash
-npm start          # Inicia o Angular (porta 4200)
-npm run build      # Build de produção
-npm test           # Executa testes
-npm run json-server # Inicia apenas o JSON Server (porta 3001)
-npm run dev        # Inicia JSON Server + Angular simultaneamente
-```
 
 ## 📊 Dados de Exemplo
 
@@ -169,7 +151,7 @@ O projeto inclui 5 contatos de exemplo no arquivo `db.json` para demonstração 
 
 ## 🚀 Próximos Passos
 
-Para expandir a aplicação, considere:
+Para expandir a aplicação, consideramos:
 
 - Implementar autenticação de usuários
 - Adicionar categorias/grupos de contatos
@@ -178,11 +160,7 @@ Para expandir a aplicação, considere:
 - Implementar notificações de aniversário
 - Adicionar histórico de interações
 
-## 📝 Licença
 
-Este projeto foi desenvolvido para fins educacionais e demonstrativos.
 
----
-
-**Desenvolvido com ❤️ usando Angular 20**
+**Desenvolvido usando Angular 20**
 
