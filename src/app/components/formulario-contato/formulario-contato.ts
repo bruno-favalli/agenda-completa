@@ -18,7 +18,7 @@ import { Contato } from '../../models/contato.interface';
 export class FormularioContatoComponent implements OnInit {
   formulario: FormGroup;
   isEdicao = false;
-  contatoId: number | null = null;
+  contatoId: string | null = null;
   carregando = false;
 
   constructor(
@@ -35,7 +35,7 @@ export class FormularioContatoComponent implements OnInit {
     this.route.params.subscribe(params => {
       if (params['id']) {
         this.isEdicao = true;
-        this.contatoId = +params['id'];
+        this.contatoId = params['id'];
         this.carregarContato();
       }
     });
@@ -96,9 +96,9 @@ export class FormularioContatoComponent implements OnInit {
         });
       } else {
         this.contatoService.criarContato(dadosContato).subscribe({
-          next: () => {
-            this.toastr.success('Contato criado com sucesso!');
-            this.router.navigate(['/contatos']);
+          next: (novoContato) => {
+            this.toastr.success("Contato criado com sucesso!");
+            this.router.navigate(["/contatos", novoContato.id]);
           },
           error: (error) => {
             console.error('Erro ao criar contato:', error);

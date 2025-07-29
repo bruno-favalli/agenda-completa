@@ -15,7 +15,7 @@ import { Contato } from '../../models/contato.interface';
 export class DetalhesContatoComponent implements OnInit {
   contato: Contato | null = null;
   carregando = true;
-  contatoId: number;
+  contatoId: string;
 
   constructor(
     private contatoService: ContatoService,
@@ -23,7 +23,7 @@ export class DetalhesContatoComponent implements OnInit {
     private route: ActivatedRoute,
     private toastr: ToastrService
   ) {
-    this.contatoId = +this.route.snapshot.params['id'];
+    this.contatoId = this.route.snapshot.params["id"];
   }
 
   ngOnInit(): void {

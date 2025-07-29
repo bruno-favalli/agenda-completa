@@ -34,7 +34,7 @@ export class ContatoService {
     );
   }
 
-  obterContatoPorId(id: number): Observable<Contato> {
+  obterContatoPorId(id: string): Observable<Contato> {
     return this.http.get<Contato>(`${this.apiUrl}/${id}`);
   }
 
@@ -44,13 +44,13 @@ export class ContatoService {
     );
   }
 
-  atualizarContato(id: number, contato: Partial<Contato>): Observable<Contato> {
+  atualizarContato(id: string, contato: Partial<Contato>): Observable<Contato> {
     return this.http.patch<Contato>(`${this.apiUrl}/${id}`, contato).pipe(
       tap(() => this.carregarContatos())
     );
   }
 
-  excluirContato(id: number): Observable<void> {
+  excluirContato(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
       tap(() => this.carregarContatos())
     );

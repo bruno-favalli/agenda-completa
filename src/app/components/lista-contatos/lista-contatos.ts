@@ -66,7 +66,7 @@ export class ListaContatosComponent implements OnInit {
     this.aplicarFiltro(); // Reaplica o filtro com a nova ordenação
   }
 
-  excluirContato(id: number, nome: string): void {
+  excluirContato(id: string, nome: string): void {
     if (confirm(`Tem certeza que deseja excluir o contato "${nome}"?`)) {
       this.contatoService.excluirContato(id).subscribe({
         next: () => {
